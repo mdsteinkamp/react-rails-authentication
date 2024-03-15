@@ -8,15 +8,25 @@ export default function App() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-  fetch("/hello")
-  .then((r) => r.json())
-  .then((data) => setCount(data.count));
+    async function fetchData() {
+      try {
+        const response = await fetch("/hello")
+        if (response.ok) {
+          const data = await response.json()
+          console.log(data)
+          setCount(data.count)
+        }
+      } catch(err){
+        console.log(err)
+      }
+    }
+    fetchData()
   }, []);
 
   return (
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home count={count}/>} />
         </Routes>
   );
 }
