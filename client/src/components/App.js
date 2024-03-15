@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom"
 import Home from "./Home";
+import Signup from "./Signup";
 import Login from "./Login";
 import '../App.css'
 
@@ -25,8 +26,9 @@ export default function App() {
 
   return (
         <Routes>
-          <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home count={count}/>} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
   );
 }
