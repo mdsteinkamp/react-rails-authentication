@@ -49,7 +49,7 @@ export default function UpdatePassword() {
         <form onSubmit={handleSubmit}>
           <h3>Current Password</h3>
           <input
-            type="text"
+            type="password"
             name="password_challenge"
             placeholder="Current Password"
             value={formData.password_challenge}
@@ -79,13 +79,13 @@ export default function UpdatePassword() {
         <div>
         <Link to="/home">Cancel</Link>
         </div>
-        {/* {errors.length > 0 &&
+        {errors.length > 0 &&
             <ul>{errors.map(e => (
               <ul key={e}>
                 <h3>{e}</h3>
               </ul>))}
             </ul>
-          } */}
+          }
     </div>
     </div>
   )
