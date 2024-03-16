@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import { NavLink } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import { UserContext } from "./UserContext"
 
@@ -38,12 +38,15 @@ export default function Signup() {
         setUser(user)
         console.log(user)
         navigate("/home")
+      } else {
+        const e = await response.json()
+        setErrors(e.errors)
+        e.errors.forEach(e => console.log("error:", e))
       }
     } catch(err) {
-      console.log("errors", err)
+      console.log(err)
     }
   }
-  console.log(formData)
 
   return(
      <div>
@@ -76,10 +79,10 @@ export default function Signup() {
             onChange={handleChange}
           />
           <br />
-          <NavLink to="/" onClick={handleSubmit}>Signup</NavLink>
+          <Link to="/" onClick={handleSubmit}>Signup</Link>
         </form>
         <div>
-        <NavLink to="/">Cancel</NavLink>
+        <Link to="/">Cancel</Link>
         </div>
         {errors.length > 0 &&
             <ul>{errors.map(e => (

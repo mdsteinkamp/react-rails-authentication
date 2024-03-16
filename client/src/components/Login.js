@@ -37,9 +37,12 @@ export default function Login() {
         setUser(user)
         console.log("logged in")
         navigate("/home")
+      } else {
+        const e = await response.json()
+        setErrors(e.errors)
+        e.errors.forEach(e => console.log("error:", e))
       }
     } catch (err) {
-      setErrors(err.errors)
       console.log(err)
     }
   }
