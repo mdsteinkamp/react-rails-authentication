@@ -7,6 +7,8 @@ export default function UpdatePassword() {
     password: "",
     password_confirmation: ""
   })
+  const [errors, setErrors] = useState([])
+
 
   function handleChange(e) {
     const name = e.target.name
@@ -17,9 +19,27 @@ export default function UpdatePassword() {
     })
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
-    console.log(formData)
+    try {
+      const response = await fetch("/password", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData)
+      })
+      if (response.ok) {
+        const user = await response.json()
+        console.log(user)
+      } else {
+        const e = await response.json()
+        setErrors(e.errors)
+        console.log(e.errors)
+      }
+    } catch(err) {
+      console.log(err)
+    }
   }
 
   return (
@@ -54,10 +74,10 @@ export default function UpdatePassword() {
             onChange={handleChange}
           />
           <br />
-          <Link to="/" onClick={handleSubmit}>Signup</Link>
+          <Link to="/" onClick={handleSubmit}>Update Password</Link>
         </form>
         <div>
-        <Link to="/">Cancel</Link>
+        <Link to="/home">Cancel</Link>
         </div>
         {/* {errors.length > 0 &&
             <ul>{errors.map(e => (

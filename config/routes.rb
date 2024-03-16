@@ -3,11 +3,12 @@ Rails.application.routes.draw do
   get "/me", to: "users#show"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
+  patch "/password", to: "passwords#update"
 
 
   resources :sessions
   # resource :signup
   resources :password_reset
-  resources :password
+  # resources :password
   resources :users
 end
