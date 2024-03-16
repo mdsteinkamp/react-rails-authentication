@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
-export default function PasswordReset() {
+export default function UpdatePassword() {
   const [formData, setFormData] = useState({
     password_challenge: "",
     password: "",
@@ -17,9 +17,14 @@ export default function PasswordReset() {
     })
   }
 
+  function handleSubmit(e) {
+    e.preventDefault()
+    console.log(formData)
+  }
+
   return (
     <div>
-      <h1>Reset Your Password</h1>
+      <h1>Update Your Password</h1>
       <div>
         <form onSubmit={handleSubmit}>
           <h3>Current Password</h3>
@@ -54,13 +59,13 @@ export default function PasswordReset() {
         <div>
         <Link to="/">Cancel</Link>
         </div>
-        {errors.length > 0 &&
+        {/* {errors.length > 0 &&
             <ul>{errors.map(e => (
               <ul key={e}>
                 <h3>{e}</h3>
               </ul>))}
             </ul>
-          }
+          } */}
     </div>
     </div>
   )

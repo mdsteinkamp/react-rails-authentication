@@ -27,8 +27,8 @@ export default function Navbar() {
       <Link to="/home">
         <button>Home</button>
       </Link>
-      <Link to="/password_reset">
-        <button>Password Reset</button>
+      <Link to="/update_password">
+        <button>Update Password</button>
       </Link>
       <button onClick={handleLogout}>Log Out</button>
     </div>

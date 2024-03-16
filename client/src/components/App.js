@@ -7,7 +7,7 @@ import Navbar from "./Navbar";
 import Signup from "./Signup";
 import Login from "./Login";
 import LandingPage from "./LandingPage";
-import PasswordReset from "./PasswordReset";
+import UpdatePassword from "./UpdatePassword";
 
 export default function App() {
   const {user} = useContext(UserContext)
@@ -37,7 +37,7 @@ export default function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<LandingPage />} />
-        <Route path="/password_reset" element={<PasswordReset />} />
+        <Route path="/update_password" element={<UpdatePassword />} />
       </Routes>
     </div>
   );
