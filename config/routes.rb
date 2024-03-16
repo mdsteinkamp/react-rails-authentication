@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  get '/hello', to: "application#hello_world"
-
   post "/signup", to: "users#create"
+  get "/me", to: "users#show"
 
-  resource :sessions
+  resources :sessions
   # resource :signup
-  resource :password_reset
-  resource :password
-  resource :users
+  resources :password_reset
+  resources :password
+  resources :users
 end

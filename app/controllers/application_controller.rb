@@ -17,7 +17,7 @@ class ApplicationController < ActionController::API
   # helper_method :current_user
 
   def authenticate_user_from_session
-    User.find_by(session[:user_id])
+    User.find_by(id: session[:user_id])
   end
 
   def user_signed_in?
