@@ -1,8 +1,5 @@
 class PasswordsController < ApplicationController
 
-  def edit
-  end
-
   def update
     if current_user.update!(password_params)
       render json: current_user, status: :ok

@@ -73,6 +73,10 @@ export default function Login() {
         <Link to="/signup">
           <button>Register Here</button>
         </Link>
+      <br />
+      <Link to="/">
+        <button>Forgot Password</button>
+      </Link>
       {errors.length > 0 &&
         <ul>{errors.map(e => (
           <ul key={e}>

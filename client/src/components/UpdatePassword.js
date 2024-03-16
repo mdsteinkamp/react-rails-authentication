@@ -1,7 +1,10 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { Link } from "react-router-dom"
+import { UserContext } from "./UserContext"
+
 
 export default function UpdatePassword() {
+  const {setUser} = useContext(UserContext)
   const [formData, setFormData] = useState({
     password_challenge: "",
     password: "",
@@ -31,6 +34,7 @@ export default function UpdatePassword() {
       })
       if (response.ok) {
         const user = await response.json()
+        setUser(user)
         console.log(user)
       } else {
         const e = await response.json()
