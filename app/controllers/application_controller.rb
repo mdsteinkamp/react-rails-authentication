@@ -24,16 +24,16 @@ class ApplicationController < ActionController::API
     render json: { errors: ["Not Authorized"] }, status: :unauthorized unless session.include?(:user_id)
   end
 
-  def login(user)
-    Current.user = user
-    reset_session
-    session[:user_id] = user.id
-  end
+  # def login(user)
+  #   Current.user = user
+  #   reset_session
+  #   session[:user_id] = user.id
+  # end
     
-  def logout(user)
-    Current.user = nil
-    reset_session
-  end
+  # def logout(user)
+  #   Current.user = nil
+  #   reset_session
+  # end
 
   def render_unprocessable_entity_response(exception)
     render json: { errors: exception.record.errors.full_messages }, status: :unprocessable_entity

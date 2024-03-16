@@ -42,18 +42,6 @@ export default function Signup() {
     } catch(err) {
       console.log("errors", err)
     }
-    // .then((resp) => {
-    //   if (resp.ok) {
-    //     resp.json().then((user) => setUser(user))
-    //     console.log(user)
-    //     navigate("/home")
-    //   } else {
-    //     resp.json().then(e => {
-    //       setErrors(e.errors)
-    //       console.log("errors", errors)
-    //     })
-    //   }
-    // })
   }
   console.log(formData)
 

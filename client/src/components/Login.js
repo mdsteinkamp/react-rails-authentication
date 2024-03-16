@@ -23,7 +23,6 @@ export default function Login() {
 
   async function handleSubmit(e) {
     e.preventDefault()
-    // console.log(formData)
     try {
       const response = await fetch("/login", {
         method: "POST",

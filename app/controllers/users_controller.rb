@@ -7,9 +7,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    user = current_user
-    if user
-      render json: user
+    # user = current_user
+    if current_user
+      render json: current_user
     else
       render json: { error: "User not found" }, status: :not_found
     end
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.save!
-      login @user
+      # login @user
       render json: @user, status: :ok
     end
   end

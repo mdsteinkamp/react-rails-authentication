@@ -12,21 +12,21 @@ export default function App() {
   const {user} = useContext(UserContext)
   const [count, setCount] = useState(0);
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch("/hello")
-        if (response.ok) {
-          const data = await response.json()
-          console.log(data)
-          setCount(data.count)
-        }
-      } catch(err){
-        console.log(err)
-      }
-    }
-    fetchData()
-  }, []);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //       const response = await fetch("/hello")
+  //       if (response.ok) {
+  //         const data = await response.json()
+  //         console.log(data)
+  //         setCount(data.count)
+  //       }
+  //     } catch(err){
+  //       console.log(err)
+  //     }
+  //   }
+  //   fetchData()
+  // }, []);
 
   return (
     <div>
