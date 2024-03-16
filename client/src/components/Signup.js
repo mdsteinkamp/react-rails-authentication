@@ -1,9 +1,10 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { NavLink } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
+import { UserContext } from "./UserContext"
 
 export default function Signup() {
-  const [user, setUser] = useState(null)
+  const {user, setUser} = useContext(UserContext)
   const [formData, setFormData] = useState({
     email: "",
     password: "",
