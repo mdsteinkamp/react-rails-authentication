@@ -23,27 +23,37 @@ export default function Signup() {
     })
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
-    fetch("/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-    .then((resp) => {
-      if (resp.ok) {
-        resp.json().then((user) => setUser(user))
+    try {
+      const response = await (fetch("/signup"), {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+      if (response.ok) {
+        const user = await response.json()
+        setUser(user)
         console.log(user)
         navigate("/home")
-      } else {
-        resp.json().then(e => {
-          setErrors(e.errors)
-          console.log("errors", errors)
-        })
       }
-    })
+    } catch(err) {
+      console.log("errors", err)
+    }
+    // .then((resp) => {
+    //   if (resp.ok) {
+    //     resp.json().then((user) => setUser(user))
+    //     console.log(user)
+    //     navigate("/home")
+    //   } else {
+    //     resp.json().then(e => {
+    //       setErrors(e.errors)
+    //       console.log("errors", errors)
+    //     })
+    //   }
+    // })
   }
   console.log(formData)
 

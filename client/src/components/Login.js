@@ -4,7 +4,7 @@ import { UserContext } from "./UserContext"
 
 export default function Login() {
   const [formData, setFormData] = useState({
-    username: "",
+    email: "",
     password: "",
   })
   const [errors, setErrors] = useState([])
@@ -21,27 +21,28 @@ export default function Login() {
     })
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
-    fetch("/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-    .then((resp) => {
-      if (resp.ok) {
-        resp.json().then((user) => {
+    // console.log(formData)
+    try {
+      const response = await fetch("/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+      if (response.ok) {
+        const user = await response.json()
+        console.log(user)
         setUser(user)
-        navigate("/pantry_items")
-      })} else {
-        resp.json().then(e => {
-          setErrors(e.errors)
-          console.log(errors)
-        })
+        console.log("logged in")
+        navigate("/home")
       }
-    })
+    } catch (err) {
+      setErrors(err.errors)
+      console.log(err)
+    }
   }
 
   return (
@@ -50,9 +51,9 @@ export default function Login() {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          name="username"
-          placeholder="Username"
-          value={formData.username}
+          name="email"
+          placeholder="Email"
+          value={formData.email}
           onChange={handleChange}
         />
         <br />
