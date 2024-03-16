@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { NavLink } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 export default function Signup() {
   const [user, setUser] = useState(null)
@@ -10,7 +11,7 @@ export default function Signup() {
   })
   const [errors, setErrors] = useState([])
 
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   function handleChange(e) {
     const name = e.target.name
@@ -34,7 +35,7 @@ export default function Signup() {
       if (resp.ok) {
         resp.json().then((user) => setUser(user))
         console.log(user)
-        // navigate("/pantry_items")
+        navigate("/home")
       } else {
         resp.json().then(e => {
           setErrors(e.errors)

@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom"
+import '../App.css'
 import Home from "./Home";
 import Signup from "./Signup";
 import Login from "./Login";
-import '../App.css'
+import LandingPage from "./LandingPage";
 
 export default function App() {
   const [count, setCount] = useState(0);
@@ -29,6 +30,7 @@ export default function App() {
           <Route path="/" element={<Home count={count}/>} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<LandingPage />} />
         </Routes>
   );
 }
