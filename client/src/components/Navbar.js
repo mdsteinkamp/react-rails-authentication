@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import { useContext } from "react"
 import { UserContext } from "./UserContext"
 
@@ -23,7 +23,13 @@ export default function Navbar() {
 
   return (
     <div>
-      <h1>navbar</h1>
+      <h3>navbar</h3>
+      <Link to="/home">
+        <button>Home</button>
+      </Link>
+      <Link to="/password_reset">
+        <button>Password Reset</button>
+      </Link>
       <button onClick={handleLogout}>Log Out</button>
     </div>
   )
