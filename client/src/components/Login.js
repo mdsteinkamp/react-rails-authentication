@@ -74,7 +74,7 @@ export default function Login() {
           <button>Register Here</button>
         </Link>
       <br />
-      <Link to="/">
+      <Link to="/forgot_password">
         <button>Forgot Password</button>
       </Link>
       {errors.length > 0 &&

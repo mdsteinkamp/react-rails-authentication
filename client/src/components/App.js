@@ -8,26 +8,11 @@ import Signup from "./Signup";
 import Login from "./Login";
 import LandingPage from "./LandingPage";
 import UpdatePassword from "./UpdatePassword";
+import ForgotPassword from "./ForgotPassword";
 
 export default function App() {
   const {user} = useContext(UserContext)
   const [count, setCount] = useState(0);
-
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     try {
-  //       const response = await fetch("/hello")
-  //       if (response.ok) {
-  //         const data = await response.json()
-  //         console.log(data)
-  //         setCount(data.count)
-  //       }
-  //     } catch(err){
-  //       console.log(err)
-  //     }
-  //   }
-  //   fetchData()
-  // }, []);
 
   return (
     <div>
@@ -38,6 +23,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<LandingPage />} />
         <Route path="/update_password" element={<UpdatePassword />} />
+        <Route path="/forgot_password" element={<ForgotPassword />} />
       </Routes>
     </div>
   );
