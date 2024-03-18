@@ -31,3 +31,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+#Ignore figaro applciation.yml for ENV variables
+/config/application.yml
+/home/matts/Development/projects/react-rails-authentication/config/application.yml
