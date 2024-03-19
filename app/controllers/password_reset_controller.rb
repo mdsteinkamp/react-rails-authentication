@@ -9,9 +9,11 @@ class PasswordResetController < ApplicationController
   end
 
   def update
-    debugger
+    # debugger
     if @user
-      render json: @user, status: :ok
+      redirect_to "http://localhost:4000/reset_password"
+      session[:user_id] = @user.id
+      debugger
     else
       render json: { errors: ["Errors"] }, status: :unprocessable_entity
     end
