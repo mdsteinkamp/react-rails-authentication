@@ -9,6 +9,7 @@ import Login from "./Login";
 import LandingPage from "./LandingPage";
 import UpdatePassword from "./UpdatePassword";
 import ForgotPassword from "./ForgotPassword";
+import ResetPassword from "./ResetPassword";
 
 export default function App() {
   const {user} = useContext(UserContext)
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/home" element={<LandingPage />} />
         <Route path="/update_password" element={<UpdatePassword />} />
         <Route path="/forgot_password" element={<ForgotPassword />} />
+        <Route path="/reset_password" element={<ResetPassword />} />
       </Routes>
     </div>
   );

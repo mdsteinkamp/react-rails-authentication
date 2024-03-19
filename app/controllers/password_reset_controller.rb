@@ -9,15 +9,21 @@ class PasswordResetController < ApplicationController
   end
 
   def update
+    debugger
+    if @user
+      render json: @user, status: :ok
+    else
+      render json: { errors: ["Errors"] }, status: :unprocessable_entity
+    end
   end
 
   def create
     if (user = User.find_by(email: params[:email]))
-      # debugger
       PasswordMailer.with(
         user: user,
         token: user.generate_token_for(:password_reset)
       ).forgot_password_email.deliver_later
+      # debugger
     render json: { alert: "If this user exists, we have sent you a password reset email." }
     else
       render json: { alert: "If this user exists, we have sent you a password reset email." }
