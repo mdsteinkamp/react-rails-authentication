@@ -1,21 +1,28 @@
 class PasswordResetController < ApplicationController
   skip_before_action :authorize
-  before_action :set_user_by_token, only: [:edit, :update]
+  before_action :set_user_by_token, only: [:update]
 
   def new
   end
 
   def edit
+    @user = User.find(session[:user_id])
+    if @user.update!(password_params)
+      render json: current_user, status: :ok
+    else
+      render json: { errors: ["Errors"] }, status: :unauthorized
+    end
   end
 
   def update
     # debugger
     if @user
       redirect_to "http://localhost:4000/reset_password"
+      # render json: user
       session[:user_id] = @user.id
-      debugger
+      # debugger
     else
-      render json: { errors: ["Errors"] }, status: :unprocessable_entity
+      render json: { errors: ["Errors password token invalid or expired, please try again"] }, status: :unprocessable_entity
     end
   end
 
@@ -36,6 +43,10 @@ class PasswordResetController < ApplicationController
 
   def set_user_by_token
     @user = User.find_by_token_for(:password_reset, params[:token])
+  end
+
+  def password_params
+    params.permit(:password, :password_confirmation)
   end
 
 
