@@ -6,8 +6,7 @@ class PasswordResetController < ApplicationController
   end
 
   def edit
-    @user = User.find(session[:user_id])
-    if @user.update!(password_params)
+    if current_user.update!(password_params)
       render json: current_user, status: :ok
     else
       render json: { errors: ["Errors"] }, status: :unauthorized
