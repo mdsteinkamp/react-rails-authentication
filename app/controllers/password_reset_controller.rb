@@ -48,5 +48,4 @@ class PasswordResetController < ApplicationController
     params.permit(:password, :password_confirmation)
   end
 
-
 end
